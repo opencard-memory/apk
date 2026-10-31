@@ -2,7 +2,7 @@ name: Android CI
 
 on:
   push:
-    branches: [ "main" ] # 본인의 기본 브랜치 이름 (main 또는 master)
+    branches: [ "main" ] # 본인의 기본 브랜치명에 맞게 유지 (main 혹은 master)
   pull_request:
     branches: [ "main" ]
 
@@ -18,17 +18,16 @@ jobs:
       uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
-        java-version: '17' # 프로젝트에 맞는 자바 버전 (보통 11 또는 17)
+        java-version: '17'
         cache: 'gradle'
 
-    - name: Gradle 실행 권한 부여
-      run: chmod +x gradlew
-
     - name: APK 빌드 (Debug)
-      run: ./gradlew assembleDebug
+      run: |
+        cd SMB_APK_Project
+        gradle assembleDebug
 
     - name: 생성된 APK 저장 및 업로드
       uses: actions/upload-artifact@v4
       with:
         name: android-debug-apk
-        path: app/build/outputs/apk/debug/app-debug.apk
+        path: SMB_APK_Project/app/build/outputs/apk/debug/app-debug.apk
