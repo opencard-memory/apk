@@ -2,7 +2,7 @@ name: Android CI
 
 on:
   push:
-    branches: [ "main" ] # 본인의 기본 브랜치명에 맞게 유지 (main 혹은 master)
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
@@ -23,11 +23,14 @@ jobs:
 
     - name: APK 빌드 (Debug)
       run: |
-        cd SMB_APK_Project
+        # settings.gradle 파일이 있는 안드로이드 프로젝트 폴더를 자동으로 찾아서 이동합니다.
+        TARGET_DIR=$(dirname $(find . -name "settings.gradle" | head -n 1))
+        echo "Found project directory: $TARGET_DIR"
+        cd "$TARGET_DIR"
         gradle assembleDebug
 
     - name: 생성된 APK 저장 및 업로드
       uses: actions/upload-artifact@v4
       with:
         name: android-debug-apk
-        path: SMB_APK_Project/app/build/outputs/apk/debug/app-debug.apk
+        path: "**/build/outputs/apk/debug/app-debug.apk" # 와일드카드를 사용하여 위치에 관계없이 APK를 찾아냅니다.
