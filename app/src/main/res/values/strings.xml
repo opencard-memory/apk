@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Super Mario Bros NES</string>
+    <string name="btn_left">◀</string>
+    <string name="btn_right">▶</string>
+    <string name="btn_jump">A\nJump</string>
+    <string name="btn_run">B\nRun</string>
+    <string name="btn_start">START</string>
+    <string name="btn_select">SELECT</string>
+    <string name="btn_pause">II</string>
+    <string name="pause_title">PAUSED</string>
+    <string name="resume">Resume</string>
+    <string name="save_checkpoint">Save Checkpoint</string>
+    <string name="load_checkpoint">Load Checkpoint</string>
+    <string name="exit_game">Exit</string>
+    <string name="saved">Checkpoint Saved!</string>
+    <string name="loaded">Checkpoint Loaded!</string>
+    <string name="no_checkpoint">No checkpoint found</string>
+    <string name="rom_missing">Put smb.nes into assets folder</string>
+</resources>
